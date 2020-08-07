@@ -25,22 +25,23 @@ h1{
   font-size: 40px;
 }
 
-header p{
+header p, #sentence{
   font-size: 20px;
 }
 
 .sentence-displayer{
-  padding: 30px 50px;
+  padding: 30px 100px;
   display: flex;
   justify-content: space-around;
 }
 
 .sentence-container{
-  width: 70%
+  width: 70%;
+  text-align: left;
 }
 
 .button-container{
-  width: 30%
+  width: 30%;
   display: flex;
   flex-direction: column;
 }
@@ -57,6 +58,11 @@ button{
   background-color: #F22248;
   cursor: pointer;
   outline:none;
+}
+
+button:hover{
+  color: #F22248;
+  background-color: #F2D06B;
 }
 
 footer{

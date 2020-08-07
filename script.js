@@ -1,17 +1,23 @@
-let btnListening, btnNext, pTrans, pSent;
+let btnStart, btnListening, btnNext, pTrans, pSent;
+btnStart = document.getElementById('btn-start');
 btnListening = document.getElementById('btn-listening');
 btnNext = document.getElementById('btn-next');
 pTrans = document.getElementById('transcription');
 pSent = document.getElementById('sentence');
-
-pTrans.textContent = ""
-pSent.textContent = ""
 
 window.addEventListener('DOMContentLoaded', initEnglishSentences());
 window.addEventListener('DOMContentLoaded', initSpeachRecognition());
 
 function initEnglishSentences() {
 
+  btnStart.addEventListener('click', event => {
+    pSent.textContent = "";
+    //SOME CODE
+  });
+
+  btnNext.addEventListener('click', event => {
+    //SOME CODE
+  });
 }
 
 function initSpeachRecognition() {
