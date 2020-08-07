@@ -1,11 +1,12 @@
 window.addEventListener("DOMContentLoaded", () => {
-  let btn = document.getElementById("btn");
+  let btnListening = document.getElementById("btn-listening");
   let p = document.getElementById('transcription');
 
   //We check to see if the browser supports the Web Speech API by checking if the SpeechRecognition object exists
   if (!('webkitSpeechRecognition' in window)) {
-    //If it doesn't support the API, we suggest the user upgrades their browser
+    //If it doesn't support the API we inform the user about it
     p.textContent = 'Your browser doesn\'t support Speech Recognition :(';
+    btnListening.style.visibility = 'hidden';
   } else {
     //If it does support the API, we create a new instance of the SpeechRecognition object
     let recognition = new webkitSpeechRecognition();
