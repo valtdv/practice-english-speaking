@@ -39,6 +39,7 @@ button{
   border-radius: 10px;
   background-color: #F22248;
   cursor: pointer;
+  outline:none;
 }
 
 footer{

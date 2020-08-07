@@ -21,9 +21,7 @@ function init(){
     recognition.maxAlternatives = 2;
     recognition.lang = 'en-US';
 
-    let speachTranscription, recognizing;
-    speachTranscription = '';
-    recognizing = false;
+    let recognizing = false;
 
     const onStart = () => {
       recognition.start();
@@ -33,6 +31,7 @@ function init(){
     }
 
     const onStop = () => {
+      recognition.stop();
       btnListening.textContent = 'Start listening';
       btnListening.style.color = '#F2D06B';
       btnListening.style.backgroundColor = '#F22248';
