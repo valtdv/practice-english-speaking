@@ -1,11 +1,19 @@
 //We start by adding an event listener that fires as soon as initial HTML document has been completely loaded and parsed
-window.addEventListener("DOMContentLoaded", () => {
-  //We declare the first variables, which represent the most important elements of our HTML
+window.addEventListener('DOMContentLoaded', init());
+
+function init(){
+  //We declare the variables that represent the most important elements of our HTML
   let btnListening, btnNext, pTrans, pSent;
-  btnListening = document.getElementById("btn-listening");
-  btnNext = document.getElementById("btn-next");
+  btnListening = document.getElementById('btn-listening');
+  btnNext = document.getElementById('btn-next');
   pTrans = document.getElementById('transcription');
   pSent = document.getElementById('sentence');
+
+  //We set the text content of the p elements to an empty string
+  pTrans.textContent = ""
+  pSent.textContent = ""
+
+  //SPEACH RECOGNITION API SETUP
 
   //We check to see if the browser supports the Web Speech API by checking if the SpeechRecognition object exists
   if (!('webkitSpeechRecognition' in window)) {
@@ -29,21 +37,45 @@ window.addEventListener("DOMContentLoaded", () => {
     //We set a boolean variable to false, which represents if the voice of the user is being recognized
     recognizing = false;
 
-    recognition.onstart = function() {
-      recognizing = true;
+    //We set the onStart function, which will start the speach recognition and change the appareance of the btnListening
+    const onStart = () => {
       recognition.start();
-      button.textContent = "Stop listening";
+      btnListening.textContent = 'Stop listening';
+      btnListening.style.color = '#F22248';
+      btnListening.style.backgroundColor = '#F2D06B';
     }
 
-    recognition.onStop = function() {
-      recognition.stop();
-      button.textContent = "Start listening";
+    //We set the onStop function, which will stop the speach recognition and change the appareance of the btnListening
+    const onStop = () => {
+      btnListening.textContent = 'Start listening';
+      btnListening.style.color = '#F2D06B';
+      btnListening.style.backgroundColor = '#F22248';
+    };
+
+    //We set some variables to simulate a typewriter effect
+    let i = 0;
+    let speed = 50;
+
+    const onResult = function() {
+      for (const res of event.results) {
+        const text = document.createTextNode(res[0].transcript);
+        if (!res.isFinal) {
+          pTrans.textContent += text.charAt(i);
+          i++;
+          setTimeout(onResult, speed);
+        }
     }
 
-    recognition.onResult = function() {
+    btnListening.addEventListener('click', event => {
+      recognizing ? onStop() : onStart();
+      recognizing = !recognizing;
+    });
 
-    }
-
-    recognition.addEventListener("result", onResult);
+    recognition.addEventListener('result', onResult);
   }
-});
+
+  //UPDATING THE SENTENCES SETUP
+  }
+}
+
+init();
