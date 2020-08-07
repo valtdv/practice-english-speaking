@@ -1,15 +1,20 @@
-window.addEventListener('DOMContentLoaded', init());
+let btnListening, btnNext, pTrans, pSent;
+btnListening = document.getElementById('btn-listening');
+btnNext = document.getElementById('btn-next');
+pTrans = document.getElementById('transcription');
+pSent = document.getElementById('sentence');
 
-function init(){
-  let btnListening, btnNext, pTrans, pSent;
-  btnListening = document.getElementById('btn-listening');
-  btnNext = document.getElementById('btn-next');
-  pTrans = document.getElementById('transcription');
-  pSent = document.getElementById('sentence');
+pTrans.textContent = ""
+pSent.textContent = ""
 
-  pTrans.textContent = ""
-  pSent.textContent = ""
+window.addEventListener('DOMContentLoaded', initEnglishSentences());
+window.addEventListener('DOMContentLoaded', initSpeachRecognition());
 
+function initEnglishSentences() {
+
+}
+
+function initSpeachRecognition() {
   if (!('webkitSpeechRecognition' in window)) {
     pSent.textContent = 'Your browser doesn\'t support Speech Recognition :(';
     btnNext.style.visibility = 'hidden';
@@ -60,5 +65,3 @@ function init(){
     recognition.addEventListener('result', onResult);
   }
 }
-
-init();
