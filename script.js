@@ -1,18 +1,24 @@
+//We start by adding an event listener that fires as soon as initial HTML document has been completely loaded and parsed
 window.addEventListener("DOMContentLoaded", () => {
-  let btnListening = document.getElementById("btn-listening");
-  let p = document.getElementById('transcription');
+  //We declare the first variables, which represent the most important elements of our HTML
+  let btnListening, btnNext, pTrans, pSent;
+  btnListening = document.getElementById("btn-listening");
+  btnNext = document.getElementById("btn-next");
+  pTrans = document.getElementById('transcription');
+  pSent = document.getElementById('sentence');
 
   //We check to see if the browser supports the Web Speech API by checking if the SpeechRecognition object exists
   if (!('webkitSpeechRecognition' in window)) {
-    //If it doesn't support the API we inform the user about it
-    p.textContent = 'Your browser doesn\'t support Speech Recognition :(';
+    //If it doesn't support the API we inform the user about it and hide all the buttons
+    pSent.textContent = 'Your browser doesn\'t support Speech Recognition :(';
+    btnNext.style.visibility = 'hidden';
     btnListening.style.visibility = 'hidden';
   } else {
     //If it does support the API, we create a new instance of the SpeechRecognition object
     let recognition = new webkitSpeechRecognition();
     //We set the continous attribute to true, so that recognition will continue even if the user pauses while speaking.
     recognition.continuous = true;
-    //We set the interimResults attribute to true,
+    //We set the interimResults attribute to true, so that the interim results are returned
     recognition.interimResults = true;
     //We set the lang attribute to english from the United States
     recognition.lang = 'en-US';

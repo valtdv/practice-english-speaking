@@ -25,7 +25,7 @@ h1{
   font-size: 40px;
 }
 
-header p{
+header p, #sentence{
   font-size: 20px;
 }
 
