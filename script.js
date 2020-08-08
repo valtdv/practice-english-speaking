@@ -9,6 +9,13 @@ window.addEventListener('DOMContentLoaded', initEnglishSentences());
 window.addEventListener('DOMContentLoaded', initSpeachRecognition());
 
 function initEnglishSentences() {
+  let easyMap, mediumMap, hardMap;
+  easyMap = new Map();
+  mediumMap = new Map();
+  hardMap = new Map();
+
+  let mySentences = = JSON.parse(sentences);
+  console.log();
 
   btnStart.addEventListener('click', event => {
     pSent.textContent = "";
