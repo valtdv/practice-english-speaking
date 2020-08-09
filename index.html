@@ -9,15 +9,20 @@
   <body>
     <header>
       <h1>Practice english speaking!</h1>
-      <p>Repeat aloud the sentence you see on the screen</p>
+      <p>Select the difficulty and repeat aloud the sentence that you see on the screen</p>
     </header>
     <section class='sentence-displayer'>
       <div class="sentence-container">
+        <select id="sel-dif">
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
         <p id='sentence'>This is how the sentence will look like</p>
       </div>
       <div class="button-container">
         <button type='button' id='btn-start'>Start</button>
-        <button type='button' id='btn-next'>Next sentence</button>
+        <button type='button' id='btn-next' disabled>Next sentence</button>
       </div>
     </section>
     <section class='sentencer-writer'>
@@ -29,5 +34,5 @@
     </footer>
   </body>
   <script src='script.js'></script>
-  <script type="text/javascript" src="sentences.json></script>
+
 </html>
